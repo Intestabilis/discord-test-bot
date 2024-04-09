@@ -4,7 +4,7 @@ import discord
 
 
 client = discord.Bot()
-token = os.getenv('MTIyNzA2MjQ1NzQ3NDc0NDM5Mw.GsmQAs.miA7k3E8wmtp2qeOumidYjxUD551HWMygnnwyU')
+token = os.getenv('MTIyNzA2MjQ1NzQ3NDc0NDM5Mw.GCtvuh.ExcTzhQM2tsWjb_Gv78e2uvebTrOlwPQN_NtOc')
 
 @client.event
 async def on_ready():
