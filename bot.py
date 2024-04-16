@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 import random
 
-description = '''An example bot to showcase the discord.ext.commands extension
-module.
 
 intents = discord.Intents.all()
 intents.members = True
