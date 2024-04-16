@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import random
 
+description = '''test bot for adding numbers.'''
 
 intents = discord.Intents.all()
 intents.members = True
