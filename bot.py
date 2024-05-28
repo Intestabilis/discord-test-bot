@@ -1,8 +1,18 @@
-import discord
-from discord.ext import commands
-import random
+import atexit
 
-description = '''test bot for adding numbers.'''
+import discord
+
+from discord.ext import commands
+from fluent import asyncsender as sender
+
+description = '''test bot for adding and subtracting numbers.'''
+
+
+fluentd_host = "localhost"
+fluentd_port = 8080
+logger = sender.FluentSender('app', host=fluentd_host, port=fluentd_port)
+
+
 
 intents = discord.Intents.all()
 intents.members = True
@@ -18,9 +28,16 @@ async def on_ready():
 
 @bot.command()
 async def add(ctx, left: int, right: int):
-    "Adds two numbers together."
-    await ctx.send(left + right)
+    result = left + right
+    logger.emit('add operation', {'username': f"{ctx.author}", 'result': f"{result}"})
+    await ctx.send(result)
 
-
+@bot.command()
+async def subtract(ctx, left: int, right: int):
+    result = left - right
+    logger.emit('subtract operation', {'username': f"{ctx.author}", 'result': f"{result}"})
+    await ctx.send(result)
 
 bot.run(token)
+
+atexit.register(logger.close())
